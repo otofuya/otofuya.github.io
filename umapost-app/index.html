@@ -6,17 +6,58 @@
 <meta name="robots" content="noindex">
 <title>うまポスト デモ版（見本のデータ）</title>
 <link rel="icon" href="/umapost-app/favicon.ico">
-<style>html,body{height:100%;margin:0;background:#FAF6EE}body{overflow:hidden}#root{display:flex;height:100%;flex:1}#boot{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;font:700 16px sans-serif;color:#1F6E4A}</style>
+<style>
+html,body{height:100%;margin:0;background:#FAF6EE}body{overflow:hidden}#root{display:flex;height:100%;flex:1}
+#boot{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;font:700 16px sans-serif;color:#1F6E4A}
+#g,#gq{font-family:"Hiragino Sans","Yu Gothic",Meiryo,sans-serif;-webkit-tap-highlight-color:transparent}
+#g{position:fixed;left:8px;right:8px;top:calc(8px + env(safe-area-inset-top));z-index:1000;background:#fff;border:3px solid #1F6E4A;border-radius:18px;box-shadow:0 10px 30px rgba(21,40,30,.3);padding:12px 14px 10px;display:none;max-width:480px;margin:0 auto}
+#g.on{display:block}
+#g .k{font-size:12px;font-weight:800;color:#1F6E4A;display:flex;justify-content:space-between;align-items:center}
+#g .t{font-size:17px;font-weight:800;color:#1F2B25;line-height:1.5;margin:4px 0 2px}
+#g .s{font-size:13px;color:#4A5650;line-height:1.5;min-height:20px}
+#g .b{display:flex;gap:8px;margin-top:8px}
+#g button{font:inherit;border:0;border-radius:999px;padding:10px 14px;font-size:15px;font-weight:800;cursor:pointer}
+#gp{background:#E1EDE5;color:#1F2B25}#gn{background:#F2B01E;color:#1F2B25;flex:1}#gx{background:none;color:#4A5650;padding:2px 6px;font-size:13px}
+#gq{position:fixed;left:0;top:58%;z-index:999;background:#1F6E4A;color:#fff;border:0;border-radius:0 14px 14px 0;padding:9px 10px 9px 8px;font-size:12px;font-weight:800;box-shadow:0 4px 12px rgba(21,40,30,.3);display:none;cursor:pointer}
+#gq.on{display:block}
+</style>
 </head>
 <body>
 <div id="root"></div>
 <div id="boot">うまポスト デモ版を読み込み中…</div>
+<div id="g" role="dialog" aria-label="使い方"><div class="k"><span id="gk"></span><button id="gx">とじる ✕</button></div><p class="t" id="gt"></p><p class="s" id="gs"></p><div class="b"><button id="gp">もどる</button><button id="gn">つぎへ</button></div></div>
+<button id="gq">使い方</button>
+<script>
+// 描く細かさを少し下げて軽くする（文字の見え方はほぼ同じ）
+(function () { var d = window.devicePixelRatio || 1; try { Object.defineProperty(window, 'devicePixelRatio', { get: function () { return Math.min(d, 1.5); } }); } catch (e) {} })();
+// 使い方の案内（デモ版だけ。アプリ本体には入っていない）
+(function () {
+  var STEPS = [
+    ['うまポスト デモ版へようこそ', '見本のデータで、自由に触れます。お金はかかりません。馬券やレースは見本です。'],
+    ['ここは「ひろば」', '今日の競馬場ごとに、みんなが買った馬券が山になっています。'],
+    ['山を押してみよう', '押すとその競馬場へ寄ります。もう一度押すと、レースごとの山が見られます。下の「ひろば」を押すと戻れます。'],
+    ['馬券を1枚入れてみよう', '下の緑の「＋記録」→「手で入力」を押します。（デモ版ではカメラは使えません）'],
+    ['買い目をえらぶ', 'まずは「単勝」→ 馬の番号を1つ →「追加する」→「記録する」の順に押します。'],
+    ['名前を入れて保存', 'はじめての記録では、ひろばで表示する名前を聞かれます。入れて保存すると、そのレースの山にあなたの馬券が加わります。'],
+    ['ほかの画面も見てみよう', '「馬券一覧」「集計」で自分の記録、「マイページ」で馬券のデザインを見られます。案内は左の「使い方」からいつでも開けます。']
+  ];
+  var i = 0, g = document.getElementById('g'), q = document.getElementById('gq');
+  function show() { document.getElementById('gk').textContent = '使い方 ' + (i + 1) + ' / ' + STEPS.length; document.getElementById('gt').textContent = STEPS[i][0]; document.getElementById('gs').textContent = STEPS[i][1];
+    document.getElementById('gp').style.visibility = i ? 'visible' : 'hidden'; document.getElementById('gn').textContent = i === 0 ? 'はじめる' : i === STEPS.length - 1 ? 'おわる' : 'つぎへ'; }
+  function open(on) { g.classList.toggle('on', on); q.classList.toggle('on', !on); if (on) show(); try { localStorage.setItem('umapost_demo_guide', on ? 'open' : 'closed'); } catch (e) {} }
+  document.getElementById('gn').onclick = function () { if (i < STEPS.length - 1) { i++; show(); } else { i = 0; open(false); } };
+  document.getElementById('gp').onclick = function () { if (i > 0) { i--; show(); } };
+  document.getElementById('gx').onclick = function () { open(false); };
+  q.onclick = function () { open(true); };
+  window.__guideStart = function () { var seen = null; try { seen = localStorage.getItem('umapost_demo_guide'); } catch (e) {} open(seen !== 'closed'); };
+})();
+</script>
 <script src="/umapost-app/canvaskit.js"></script>
 <script>
 CanvasKitInit({ locateFile: function (f) { return '/umapost-app/' + f; } }).then(function (ck) {
   window.CanvasKit = ck; globalThis.CanvasKit = ck;
-  var s = document.createElement('script'); s.src = '/umapost-app/_expo/static/js/web/entry-922b37b232ef4f1c33efe50071779b58.js';
-  s.onload = function () { setTimeout(function () { var b = document.getElementById('boot'); if (b) b.remove(); }, 1500); };
+  var s = document.createElement('script'); s.src = '/umapost-app/_expo/static/js/web/entry-bc993d85cdf813b53b91ae22465b8a5a.js';
+  s.onload = function () { setTimeout(function () { var b = document.getElementById('boot'); if (b) b.remove(); window.__guideStart(); }, 1500); };
   document.body.appendChild(s);
 }).catch(function () { document.getElementById('boot').textContent = '読み込めませんでした。通信を確かめて、もう一度開いてください。'; });
 </script>
