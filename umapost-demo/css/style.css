@@ -1,0 +1,117 @@
+:root{--ink:#1F2B25;--green:#1F6E4A;--deep:#154F35;--yellow:#F2B01E;--bg:#F6F8F7;--bg2:#E1EDE5;--gray:#4A5650;--red:#D2352B;--mint:#B9D9C2}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:'M PLUS Rounded 1c','Hiragino Sans','Yu Gothic',Meiryo,sans-serif;font-weight:700;color:var(--ink);background:var(--bg);overscroll-behavior:none}
+h1,h2,.dela{font-family:'Dela Gothic One','Hiragino Sans',sans-serif;font-weight:400;line-height:1.2}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+.btn{display:block;width:100%;padding:18px 20px;border-radius:999px;background:var(--yellow);color:var(--ink);font-size:22px;font-weight:800;text-align:center;box-shadow:0 6px 0 #c98e0e;text-decoration:none}
+.btn:active{transform:translateY(4px);box-shadow:0 2px 0 #c98e0e}
+.btn[disabled]{background:#cfd6d2;box-shadow:0 6px 0 #b3bcb7;color:#7d8883}
+.btn.green{background:var(--green);color:#fff;box-shadow:0 6px 0 #124a31}
+.btn.ghost{background:#fff;box-shadow:0 4px 0 #cfd6d2;font-size:18px}
+.note{font-size:13px;font-weight:400;color:var(--gray);line-height:1.6}
+
+/* ---------- スマホ（参加者） ---------- */
+#app{max-width:520px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;padding-bottom:env(safe-area-inset-bottom)}
+.top{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:var(--deep);color:#fff}
+.top .dela{font-size:20px}.top span{font-size:13px;color:var(--mint)}
+.view{flex:1;padding:22px 18px 28px;display:flex;flex-direction:column;gap:18px}
+.view h2{font-size:30px}.kick{font-size:15px;color:var(--green);font-weight:800}
+.center{align-items:center;justify-content:center;text-align:center}
+input.name{width:100%;padding:16px 18px;border-radius:16px;border:3px solid var(--mint);font:inherit;font-size:20px;background:#fff}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hcard{background:#fff;border-radius:16px;overflow:hidden;text-align:left;box-shadow:0 4px 12px rgba(21,40,30,.1);border:4px solid transparent}
+.hcard.on{border-color:var(--yellow);transform:scale(1.02)}
+.hcard .band{height:44px;display:flex;align-items:center;padding:0 12px;font-family:'Dela Gothic One',sans-serif;font-size:26px}
+.hcard .body{padding:8px 12px 10px}.hcard b{display:block;font-size:15px;font-weight:800}.hcard small{font-size:12px;font-weight:400;color:var(--gray)}
+.sticky{position:sticky;bottom:12px}
+.big-emoji{font-size:72px;line-height:1}
+.cheers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;width:100%}
+.cheers button{background:#fff;border-radius:20px;padding:18px 6px;font-size:16px;font-weight:800;box-shadow:0 5px 0 #cfd6d2}
+.cheers button:active{transform:translateY(4px);box-shadow:0 1px 0 #cfd6d2}.cheers i{display:block;font-size:40px;font-style:normal}
+.panel{background:#fff;border-radius:20px;padding:18px;box-shadow:0 4px 12px rgba(21,40,30,.1)}
+.rank{display:flex;align-items:center;gap:12px;font-size:18px;font-weight:800}.rank + .rank{margin-top:10px}
+.rank .num,.tk .num{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;font-family:'Dela Gothic One',sans-serif;font-size:22px;border:2px solid rgba(0,0,0,.15);flex:none}
+.rank small{color:var(--gray);font-size:14px;width:36px}
+.pill{display:inline-block;padding:6px 16px;border-radius:999px;background:var(--green);color:#fff;font-size:14px;font-weight:800}
+.pill.y{background:var(--yellow);color:var(--ink)}
+.tabs{position:sticky;bottom:0;display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-top:1px solid #dfe6e2;padding-bottom:env(safe-area-inset-bottom)}
+.tabs button{padding:10px 0 12px;font-size:12px;font-weight:800;color:#8a948f}.tabs i{display:block;font-size:22px;font-style:normal}
+.tabs button.on{color:var(--green)}
+.plaza{display:flex;flex-direction:column;gap:14px}
+.post{background:#fff;border-radius:18px;padding:14px;box-shadow:0 4px 12px rgba(21,40,30,.08)}
+.post .who{font-size:14px;font-weight:800;margin-bottom:8px;display:flex;justify-content:space-between}
+.reacts{display:flex;gap:8px;margin-top:10px}.reacts button{flex:1;background:var(--bg2);border-radius:999px;padding:8px 4px;font-size:15px;font-weight:800}
+.reacts button:active{background:var(--yellow)}
+.skins{display:grid;grid-template-columns:1fr;gap:12px;justify-items:center}.skins button{width:100%;max-width:372px}.skins button{background:#fff;border-radius:16px;padding:10px;border:4px solid transparent;font-size:14px;font-weight:800}
+.skins button.on{border-color:var(--green)}.skins .tk{margin-bottom:6px}
+#toast{position:fixed;left:50%;top:16px;transform:translate(-50%,-140%);background:#fff;border-radius:18px;padding:12px 18px;font-size:15px;font-weight:800;box-shadow:0 10px 30px rgba(21,40,30,.25);transition:transform .3s,opacity .3s;opacity:0;z-index:50;max-width:92%;text-align:center}
+#toast.on{transform:translate(-50%,0);opacity:1}
+#link{position:fixed;left:0;right:0;bottom:0;background:var(--red);color:#fff;font-size:13px;text-align:center;padding:6px;z-index:60;display:none}
+
+/* ---------- 馬券 ---------- */
+.tk{position:relative;display:flex;align-items:stretch;gap:8px;padding:10px;border-radius:10px;background:#FCFCF7;border:2px solid #CFCBBD;color:#1A1A1A;box-shadow:0 6px 14px rgba(21,40,30,.18);overflow:hidden;width:100%;max-width:340px;min-height:96px}
+.tk.own{border:4px solid var(--yellow)}
+.tk-l{display:flex;flex-direction:column;gap:3px;padding-right:8px;border-right:8px solid #D3EBE0;min-width:92px}
+.tk-l b{font-size:15px;font-weight:800}.tk-r{font-size:12px}.tk-r i{font-style:normal;background:#1A1A1A;color:#fff;padding:0 6px;margin-right:3px;font-weight:800}
+.tk-l em{font-style:normal;font-size:12px;font-weight:400;color:#555;margin-top:auto;max-width:96px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tk-c{display:flex;flex-direction:column;justify-content:center;align-items:center;border:3px solid #1A1A1A;background:#fff;padding:0 8px;font-size:20px;font-weight:800;line-height:1.15}
+.tk-m{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}.tk-m small{font-size:12px;font-weight:800}
+.tk.big{max-width:none;min-height:150px;padding:16px}.tk.big .tk-l b{font-size:22px}.tk.big .tk-c{font-size:30px;padding:0 12px}.tk.big .num{width:64px;height:64px;font-size:36px}.tk.big .tk-m small{font-size:16px}
+.skin-silver{background:linear-gradient(135deg,#f4f5f7,#cfd4da 50%,#f4f5f7)}
+.skin-gold{background:linear-gradient(135deg,#fff3c4,#e6b93a 50%,#fff3c4)}
+.skin-aurora{background:linear-gradient(135deg,#d9f7ee,#e3ddff 50%,#ffe1ee)}
+.skin-sakura{background:linear-gradient(135deg,#fff0f4,#f9c6d6)}
+.tk.stamped .tk-m{align-items:flex-start;padding-left:10px}
+.tk.big .stamp{width:118px;height:118px;margin-top:-59px;font-size:38px}
+.stamp{position:absolute;right:6px;top:50%;width:88px;height:88px;margin-top:-44px;border:8px solid var(--red);border-radius:50%;background:rgba(255,255,255,.92);color:var(--red);font-family:'Dela Gothic One',sans-serif;font-size:28px;display:flex;align-items:center;justify-content:center;transform:rotate(-14deg);animation:slam .35s cubic-bezier(.2,1.6,.4,1) both;animation-delay:.9s}
+@keyframes slam{from{transform:rotate(-14deg) scale(3.2);opacity:0}to{transform:rotate(-14deg) scale(1);opacity:1}}
+#hit{position:fixed;inset:0;background:var(--deep);z-index:40;display:none;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:24px;color:#fff;text-align:center}
+#hit.on{display:flex}#hit canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#hit h2{font-size:40px;color:var(--yellow)}#hit .tk{animation:zoom .6s cubic-bezier(.2,1.4,.4,1) both;z-index:1}#hit .btn{z-index:1;max-width:320px}
+@keyframes zoom{from{transform:scale(0) rotate(-20deg)}to{transform:scale(1) rotate(-3deg)}}
+#hit.shake{animation:shake .4s 1s}
+@keyframes shake{20%{transform:translate(-8px,6px)}40%{transform:translate(8px,-6px)}60%{transform:translate(-6px,-4px)}80%{transform:translate(5px,4px)}}
+
+/* ---------- スクリーン ---------- */
+body.screen{background:var(--bg);overflow:hidden}
+#cv{position:fixed;inset:0;width:100vw;height:100vh;display:block}
+.sbar{position:fixed;left:0;right:0;top:0;display:flex;align-items:center;gap:2.5vw;padding:2.2vh 3vw;z-index:5}
+.sbar .dela{font-size:3.6vh}.sbar .stage{font-size:2.6vh;background:var(--ink);color:#fff;border-radius:999px;padding:.8vh 2.4vh;font-family:'Dela Gothic One',sans-serif}
+.sbar .cnt{margin-left:auto;font-size:2.6vh;font-weight:800;color:var(--green)}
+#miniqr{position:fixed;right:2.4vw;bottom:3vh;background:#fff;padding:1.2vh;border-radius:2vh;box-shadow:0 1vh 3vh rgba(21,40,30,.2);z-index:6;text-align:center;font-size:1.8vh;font-weight:800}
+#miniqr canvas{width:16vh;height:16vh;display:block}
+.ov{position:fixed;inset:0;display:none;z-index:4}.ov.on{display:flex}
+#lobby{align-items:center;justify-content:center;gap:6vw;padding:0 6vw}
+#lobby h1{font-size:9vh}#lobby p{font-size:3.6vh;font-weight:800;color:var(--green);margin-top:2vh}
+#lobby .q{background:#fff;padding:3vh;border-radius:4vh;box-shadow:0 2vh 6vh rgba(21,40,30,.2);text-align:center;font-size:2.4vh}
+#lobby .q canvas{width:46vh;height:46vh;display:block;margin-bottom:1vh}
+#names{display:flex;flex-wrap:wrap;gap:1vh;margin-top:3vh;max-width:44vw;max-height:26vh;overflow:hidden}
+#names span{background:var(--green);color:#fff;border-radius:999px;padding:.6vh 2vh;font-size:2.4vh;animation:pop .3s}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+#votes{position:fixed;left:3vw;top:15vh;width:30vw;z-index:4;display:none;flex-direction:column;gap:1.3vh}
+#votes.on{display:flex}#votes h2{font-size:5.4vh;margin-bottom:1vh}
+.vrow{display:flex;align-items:center;gap:1.2vh;font-size:2.3vh;font-weight:800}
+.vrow .num{width:5vh;height:5vh;border-radius:1.2vh;display:flex;align-items:center;justify-content:center;font-family:'Dela Gothic One',sans-serif;font-size:2.8vh;border:.3vh solid rgba(0,0,0,.15);flex:none}
+.vrow .nm{width:21vh;white-space:nowrap;overflow:hidden}
+.vrow .bar{height:2.6vh;background:var(--green);border-radius:999px;min-width:.6vh;transition:width .4s}
+#result{background:var(--deep);color:#fff;flex-direction:column;justify-content:center;padding:0 7vw;gap:3.5vh}
+#result h1{font-size:8vh}#result .first{display:flex;align-items:center;gap:3vw}
+#result .first .num{width:22vh;height:22vh;border-radius:3vh;font-size:15vh;display:flex;align-items:center;justify-content:center;font-family:'Dela Gothic One',sans-serif}
+#result .first b{font-family:'Dela Gothic One',sans-serif;font-size:10vh;font-weight:400;display:block}#result .first small{font-size:4vh;color:var(--yellow)}
+#result .rest{font-size:4vh;color:var(--mint)}#result .hits{font-family:'Dela Gothic One',sans-serif;font-size:6vh;color:var(--yellow)}
+#result .who{font-size:3vh;color:#fff;line-height:1.6}
+#banner{position:fixed;left:50%;bottom:3vh;transform:translateX(-50%);background:var(--yellow);border-radius:999px;padding:1.4vh 4vh;font-family:'Dela Gothic One',sans-serif;font-size:3.4vh;z-index:6;display:none;white-space:nowrap}
+#banner.on{display:block}
+
+/* ---------- 進行役 ---------- */
+body.host{background:var(--bg2)}
+.hostwrap{max-width:560px;margin:0 auto;padding:20px 16px 40px;display:flex;flex-direction:column;gap:14px}
+.status{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;text-align:center}
+.status div{background:#fff;border-radius:16px;padding:12px 6px}.status b{display:block;font-family:'Dela Gothic One',sans-serif;font-size:28px;font-weight:400}.status small{font-size:12px;color:var(--gray)}
+.host .btn.now{outline:5px solid var(--ink)}
+.links{background:#fff;border-radius:16px;padding:14px;font-size:13px;font-weight:400;word-break:break-all;line-height:1.7}
+.warn{background:#fff3c4;border-radius:14px;padding:12px 14px;font-size:14px;line-height:1.6}
+
+.hitwrap{position:relative;z-index:1}
+.stamp.out{right:-12px;top:-88px;margin:0;width:124px;height:124px;font-size:40px;z-index:2}
